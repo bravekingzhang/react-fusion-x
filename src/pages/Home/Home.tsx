@@ -1,6 +1,5 @@
 import {
   TextInput,
-  Code,
   UnstyledButton,
   Badge,
   Text,
@@ -8,6 +7,7 @@ import {
   ActionIcon,
   Tooltip,
   rem,
+  Kbd,
 } from "@mantine/core";
 import {
   IconBulb,
@@ -18,14 +18,11 @@ import {
 } from "@tabler/icons-react";
 import classes from "./Home.module.css";
 
+import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
+
 import { DemoCard } from "../../components/Card";
 import { Outlet } from "react-router-dom";
 import { UserButton } from "../../components/UserButton";
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
 
 const links = [
   { icon: IconBulb, label: "Activity", notifications: 3 },
@@ -75,12 +72,18 @@ export function Home() {
   ));
 
   return (
-    <ResizablePanelGroup
-      direction="horizontal"
-      className="min-h-[200px] max-w-md rounded-lg border"
-    >
-      <ResizablePanel defaultSize={25} collapsible minSize={5} maxSize={35}>
-        <div className="flex h-full items-center justify-center p-6">
+    <PanelGroup autoSaveId="persistence" direction="horizontal">
+      <Panel defaultSize={25} collapsible minSize={5} maxSize={35}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "100vh",
+            padding: "6px",
+          }}
+        >
           <nav className={classes.navbar}>
             <div className={classes.section}>
               <UserButton />
@@ -88,7 +91,6 @@ export function Home() {
 
             <TextInput
               placeholder="Search"
-              size="xs"
               leftSection={
                 <IconSearch
                   style={{ width: rem(12), height: rem(12) }}
@@ -96,9 +98,7 @@ export function Home() {
                 />
               }
               rightSectionWidth={70}
-              rightSection={
-                <Code className={classes.searchCode}>Ctrl + K</Code>
-              }
+              rightSection={<Kbd>Ctrl + K</Kbd>}
               styles={{ section: { pointerEvents: "none" } }}
               mb="sm"
             />
@@ -129,9 +129,18 @@ export function Home() {
             <DemoCard />
           </nav>
         </div>
-      </ResizablePanel>
-      <ResizableHandle withHandle />
-      <ResizablePanel defaultSize={75}>
+      </Panel>
+      <PanelResizeHandle
+        style={{
+          width: "8px",
+          display: "flex",
+          backgroundColor: "gray",
+          cursor: "ew-resize",
+          touchAction: "none",
+          userSelect: "none",
+        }}
+      />
+      <Panel defaultSize={75}>
         <div
           style={{
             display: "flex",
@@ -142,7 +151,7 @@ export function Home() {
         >
           <Outlet />
         </div>
-      </ResizablePanel>
-    </ResizablePanelGroup>
+      </Panel>
+    </PanelGroup>
   );
 }

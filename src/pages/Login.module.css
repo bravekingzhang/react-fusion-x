@@ -5,12 +5,12 @@
   }
 
   .form {
-    border-right: rem(1px) solid light-dark(var(--mantine-color-gray-3), var(--mantine-color-dark-7));
+    border-right: rem(1px) solid light-dark( var(--mantine-color-gray-3), var(--mantine-color-dark-7));
     min-height: rem(900px);
     max-width: rem(450px);
     padding-top: rem(80px);
 
-    @media (max-width: $mantine-breakpoint-sm) {
+    @media (max-width: var(--mantine-breakpoint-sm)) {
       max-width: 100%;
     }
   }

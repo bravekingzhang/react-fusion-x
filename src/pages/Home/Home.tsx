@@ -24,11 +24,7 @@ import { DemoCard } from "../../components/Card";
 import { Outlet } from "react-router-dom";
 import { UserButton } from "../../components/UserButton";
 
-const links = [
-  { icon: IconBulb, label: "Activity", notifications: 3 },
-  { icon: IconCheckbox, label: "Tasks", notifications: 4 },
-  { icon: IconUser, label: "Contacts" },
-];
+import useStore from "../../store";
 
 const collections = [
   { emoji: "👍", label: "Sales" },
@@ -43,6 +39,13 @@ const collections = [
 ];
 
 export function Home() {
+  const count = useStore((state) => state.count);
+
+  const links = [
+    { icon: IconBulb, label: "Activity", notifications: count },
+    { icon: IconCheckbox, label: "Tasks", notifications: count },
+    { icon: IconUser, label: "Contacts" },
+  ];
   const mainLinks = links.map((link) => (
     <UnstyledButton key={link.label} className={classes.mainLink}>
       <div className={classes.mainLinkInner}>

@@ -8,7 +8,7 @@ import {
   Text,
   Anchor,
 } from "@mantine/core";
-import classes from "./Login.module.css";
+import classes from "./index.module.css";
 
 export function Login() {
   return (

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home/Home";
+import { Home } from "./pages/Home";
 import { Login } from "./pages/Login";
-import { Bear } from "./pages/Bear/Bear";
+import { Bear } from "./pages/StateDemo";
 import { Flex } from "@mantine/core";
-import { PostPage } from "./pages/Post/Post";
+import { PostPage } from "./pages/QueryDemo";
 
 const AppRouter: React.FC = () => {
   return (

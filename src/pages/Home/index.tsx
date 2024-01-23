@@ -16,13 +16,13 @@ import {
   IconSearch,
   IconPlus,
 } from "@tabler/icons-react";
-import classes from "./Home.module.css";
+import classes from "./index.module.css";
 
 import { Panel, PanelGroup, PanelResizeHandle } from "react-resizable-panels";
 
 import { DemoCard } from "../../components/Card";
 import { Outlet } from "react-router-dom";
-import { UserButton } from "../../components/UserButton";
+import { UserInfo } from "../../components/UserInfo/Index";
 
 import useStore from "../../store";
 
@@ -89,7 +89,7 @@ export function Home() {
         >
           <nav className={classes.navbar}>
             <div className={classes.section}>
-              <UserButton />
+              <UserInfo />
             </div>
 
             <TextInput
